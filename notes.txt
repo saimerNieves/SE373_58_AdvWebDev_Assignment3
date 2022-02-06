@@ -1,0 +1,18 @@
+NBC Architecture
+Model View Controller Architecture
+
+Templeteting Engine
+
+
+npm install --save express express-handlebars
+
+Random Images API - https://picsum.photos/500/500
+
+handle bars can be used to pass data and templates
+
+
+
+Partials - separete pieaces of code
+
+Other good one - Pug and EJS
+
