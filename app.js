@@ -1,48 +1,60 @@
-const express = require('express')
-const exphbs = require('express-handlebars')
+//ROUTER
 
+
+const express = require('express') //importing express from express
+const expressHandleBars = require('express-handlebars') //import express from expressHandlebars
+const port = process.env.port || 3000 //adjusts based on the environment being used on
 const app = express()
 
-//Set the view engine
-app.engine('hbs', exphbs.engine({
-    defaultLayout:'main',
-    extname:'.hbs',
-    helpers:{
+//set our view engine
+//Expres templates do it for you
+
+//Engine configurations*******************************
+app.engine("hbs", expressHandleBars.engine({
+    defaultLayout:"main",
+    extname:".hbs",
+    helpers:{ //helpers are functions we can use to help us
         getShortComment(comment){
             if(comment.length < 60){
-                return comment
+                return comment;
             }
-            return comment.substring(0,60)+'...'
+            else{
+                return comment.substring(0, 60) + "...";
+            }
         }
     }
-}))
+})) //what engine we will be using
 
-app.set('view engine', 'hbs')
+app.set("view engine", "hbs") //sets the engine
 
-//route to render the page
-app.get('/',(req,res)=>{
-    res.render('home', {
-        post:[
-            {
-                author:"Schooly D",
+//2 parameters are route and callback function
+app.get("/",(request,response)=>{ //route to render the page
+
+    //render html page home
+    response.render("home_Template", {
+        posts:[
+            {  //Passing in variables here an object of variables
+                author:"Saimer Mil Nieves",
                 image:"https://picsum.photos/500/500",
-                comments:['comment 1', 'comment 2', 'Eiusmod occaecat nostrud excepteur anim velit reprehenderit officia sunt nostrud incididunt. Ea commodo qui deserunt ea pariatur mollit non quis Lorem sint est qui labore aliquip. Eiusmod excepteur elit veniam quis quis officia.']
+                comments:["comment 1", "comment 2", "Voluptate nulla enim exercitation officia aliquip voluptate. Qui qui cupidatat id qui laborum elit labore voluptate anim sit velit id. Dolore amet incididunt nisi esse labore adipisicing incididunt culpa commodo."]
             },
-            {
-                author:"Jordan D",
+            {  //Passing in variables here an object of variables
+                author:"Mil House",
                 image:"https://picsum.photos/500/500?2",
                 comments:[]
             },
-            {
-                author:"Terry B",
+            {  //Passing in variables here an object of variables
+                author:"Elun Musk",
                 image:"https://picsum.photos/500/500?3",
-                comments:['yo this is awesome', 'Proident qui tempor aute Lorem culpa Lorem do labore cillum veniam veniam veniam commodo cupidatat. Et nisi anim veniam eiusmod fugiat labore ad minim. Quis anim esse fugiat ullamco non.', 'this is the best']
-            },
+                comments:["Nice Pic", "Qui eu occaecat esse velit cillum fugiat eiusmod ullamco. Dolore ipsum culpa Lorem quis minim ut esse in id excepteur fugiat aute. Commodo consequat elit Lorem magna id nostrud in deserunt sit.", "Awesome ! "]
+            }
         ]
-    })
+    }
+        )
 })
 
-//set up port for connection
-app.listen(3011, ()=>{
-    console.log("Connected on port 3011")
+//setup port for connection 
+app.listen(port, ()=>{
+
+    console.log("Connected on port 3005")
 })
