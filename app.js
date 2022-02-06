@@ -3,7 +3,7 @@
 
 const express = require('express') //importing express from express
 const expressHandleBars = require('express-handlebars') //import express from expressHandlebars
-const port = process.env.port || 3000 //adjusts based on the environment being used on
+const port = process.env.PORT || 3000 //adjusts based on the environment being used on
 const app = express()
 
 //set our view engine
@@ -56,5 +56,5 @@ app.get("/",(request,response)=>{ //route to render the page
 //setup port for connection 
 app.listen(port, ()=>{
 
-    console.log("Connected on port 3005")
+    console.log("Connected on port")
 })
