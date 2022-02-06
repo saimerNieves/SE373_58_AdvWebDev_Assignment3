@@ -56,5 +56,5 @@ app.get("/",(request,response)=>{ //route to render the page
 //setup port for connection 
 app.listen(port, ()=>{
 
-    console.log("Connected on port")
+    console.log(`Connected on port ${port}`)
 })
